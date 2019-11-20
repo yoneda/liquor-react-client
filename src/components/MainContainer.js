@@ -1,32 +1,30 @@
 import React from "react";
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { selectors, operations } from "./../modules";
+import { addCount, subCount, resetCount } from "../actions/counter";
 
 const mapStateToProps = state => ({
-  count: selectors.getCount(state),
+  count: state.count,
 });
 
 const mapDispatchToProps = dispatch => ({
-  addHandler: () => operations.addCount(dispatch),
-  subHandler: () => operations.subCount(dispatch),
-  resetHandler: () => operations.resetCount(dispatch),
+  addCount: bindActionCreators(addCount, dispatch),
+  subCount: bindActionCreators(subCount, dispatch),
+  resetCount: bindActionCreators(resetCount, dispatch),
 });
 
-const MainContainer = ({count, addHandler, subHandler, resetHandler}) => {
+const MainContainer = ({ count, addCount, subCount, resetCount }) => {
   return (
     <div>
       <div>counter app</div>
       <div>
         <div>value: {count}</div>
-        <button onClick={()=>addHandler()}>+</button>
-        <button onClick={()=>subHandler()}>-</button>
-        <button onClick={()=>resetHandler()}>reset</button>
+        <button onClick={() => addCount()}>+</button>
+        <button onClick={() => subCount()}>-</button>
+        <button onClick={() => resetCount()}>reset</button>
       </div>
     </div>
   );
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MainContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
