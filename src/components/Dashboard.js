@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => ({
-  profile: state.profile.profile,
+  profile: state.profile,
   posts: state.recipes.posts,
   stars: state.recipes.stars
 });

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => ({
-  profile: state.profile.profile
+  profile: state.profile,
 });
 
 // MEMO: 値は復帰時にはキープしないためローカルstateを利用
