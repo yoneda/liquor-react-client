@@ -11,18 +11,18 @@ const Home = props => {
   return (
     <div>
       <h2>ホーム画面</h2>
-      <h3>新着</h3>
-      <ul>
+      <div>
+        <span>新着: </span>
         {
-          rankings.map(recipe => <li>{recipe.title}</li>)
+          arrivals.map(recipe => <span>{recipe.title} </span>)
         }
-      </ul>
-      <h3>ランキング</h3>
-      <ul>
+      </div>
+      <div>
+        <span>ランキング: </span>
         {
-          arrivals.map(recipe => <li>{recipe.title}</li>)
+          rankings.map(recipe => <span>{recipe.title} </span>)
         }
-      </ul>
+      </div>
     </div>
   );
 };

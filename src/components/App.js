@@ -16,7 +16,7 @@ const App = () => (
       <Link to="dashboard">マイページ</Link> |{" "}
       <Link to="settings">設定</Link> |{" "}
       <Link to="register">登録</Link> |{" "}
-      <Link to="login">ログイン</Link> |{" "}
+      <Link to="login">ログイン</Link>
     </nav>
     <Router>
       <Home path="/" />

@@ -10,21 +10,21 @@ const Recipe = props => {
   return (
     <div>
     <h2>レシピ画面</h2>
-    <h3>{recipe.title}</h3>
-    <span>費用: {recipe.cost}円, </span>
-    <span>調理時間: {recipe.cookTime}分</span>
-    <h3>材料</h3>
-    <ul>
-    {
-      recipe.ingredients.map(line => <li>{line}</li>)
-    }
-    </ul>
-    <h3>手順</h3>
-    <ul>
-    {
-      recipe.directions.map(line => <li>{line}</li>)
-    }
-    </ul>
+    <div>タイトル: {recipe.title}</div>
+    <div>費用: {recipe.cost}円, </div>
+    <div>調理時間: {recipe.cookTime}分</div>
+    <div>
+      <span>材料: </span>
+      {
+        recipe.ingredients.map(line => <span>{line} </span>)
+      }
+    </div>
+    <div>
+      <span>手順: </span>
+      {
+        recipe.directions.map(line => <span>{line} </span>)
+      }
+    </div>
   </div>
   );
 };

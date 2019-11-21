@@ -11,7 +11,7 @@ const recipeGen = title => ({
 const initialState = {
   picked: recipeGen("ペペロンチーノ"),
   posts: [recipeGen("カプレーゼ"),recipeGen("カルボナーラ"),recipeGen("マルゲリータ")],
-  starts: [recipeGen("ローストビーフ"),recipeGen("ジェノベーゼ"),recipeGen("ペンネリガータ")],
+  stars: [recipeGen("ローストビーフ"),recipeGen("ジェノベーゼ"),recipeGen("ペンネリガータ")],
   rankings: [recipeGen("おでん"),recipeGen("麻婆豆腐"),recipeGen("餃子")],
   arrivals: [recipeGen("ラム肉のグリル"),recipeGen("ブルーチーズのパスタ"),recipeGen("トリュフのパスタ")],
 };
