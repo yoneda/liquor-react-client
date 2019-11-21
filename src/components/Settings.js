@@ -2,7 +2,7 @@ import React from "react";
 
 const Settings = () => (
   <div>
-    <h3>設定画面</h3>
+    <h2>設定画面</h2>
   </div>
 );
 

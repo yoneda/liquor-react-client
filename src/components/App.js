@@ -12,7 +12,7 @@ const App = () => (
   <div>
     <nav>
       <Link to="/">ホーム</Link> |{"" }
-      <Link to="editor">新規投稿</Link>
+      <Link to="editor">新規投稿</Link> |{" "}
       <Link to="dashboard">マイページ</Link> |{" "}
       <Link to="settings">設定</Link> |{" "}
       <Link to="register">登録</Link> |{" "}
@@ -25,6 +25,7 @@ const App = () => (
       <Settings path="settings" />
       <Register path="register" />
       <Login path="login" />
+      <Recipe path="recipe" />
     </Router>
   </div>
 );

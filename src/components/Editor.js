@@ -2,7 +2,7 @@ import React from "react";
 
 const Editor = () => (
   <div>
-    <h3>新規投稿</h3>
+    <h2>新規投稿</h2>
   </div>
 );
 

@@ -2,14 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => ({
-  rankings: state.rankings,
-  arrivals: state.arrivals
+  rankings: state.recipes.rankings,
+  arrivals: state.recipes.arrivals
 });
 
 const Home = props => {
   const { rankings, arrivals } = props;
   return (
     <div>
+      <h2>ホーム画面</h2>
       <h3>新着</h3>
       <ul>
         {

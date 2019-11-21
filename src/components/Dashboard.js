@@ -1,9 +1,14 @@
 import React from "react";
+import { connect } from "react-redux";
+
+const mapStateToProps = state => ({
+  profile: state.profile.profile,
+});
 
 const Dashboard = () => (
   <div>
-    <h3>マイページ画面</h3>
+    <h2>マイページ画面</h2>
   </div>
 );
 
-export default Dashboard;
+export default connect(mapStateToProps)(Dashboard);
