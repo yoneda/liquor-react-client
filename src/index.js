@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from "react-dom";
 import './index.css';
 import App from "./components/App";
-import reducer from "./reducers/counter";
+import reducer from "./reducers/recipes";
 import { createStore } from "redux";
 import { Provider } from 'react-redux'
 

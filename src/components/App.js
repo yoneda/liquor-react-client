@@ -1,9 +1,9 @@
 import React from 'react'
-import MainContainer from "./MainContainer";
+import Home from "./Home";
 
 const App = () => (
   <div>
-    <MainContainer />
+    <Home />
   </div>
 )
 
