@@ -5,7 +5,6 @@ const mapStateToProps = state => ({
   profile: state.profile,
 });
 
-// MEMO: 値は復帰時にはキープしないためローカルstateを利用
 const Settings = props => {
   const { name, bio, mail, pass } = props.profile;
   return (

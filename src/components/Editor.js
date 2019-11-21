@@ -2,15 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => ({
-  title: state.editor.title,
-  cookTime: state.editor.cookTime,
-  cost: state.editor.cost,
-  ingredients: state.editor.ingredients,
-  directions: state.editor.directions
+  editor: state.editor,
 });
 
 const Editor = props => {
-  const { title, cookTime, cost, ingredients, directions } = props;
+  const { title, cookTime, cost, ingredients, directions } = props.editor;
   return (
     <div>
       <h2>新規投稿</h2>
