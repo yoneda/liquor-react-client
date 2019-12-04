@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => ({
@@ -8,20 +8,24 @@ const mapStateToProps = state => ({
 
 const Home = props => {
   const { rankings, arrivals } = props;
+
+  useEffect(() => {
+  });
+
   return (
     <div>
       <h2>ホーム画面</h2>
       <div>
         <span>新着: </span>
-        {
-          arrivals.map(recipe => <span>{recipe.title} </span>)
-        }
+        {arrivals.map((recipe, index) => (
+          <span key={index}>{recipe.title} </span>
+        ))}
       </div>
       <div>
         <span>ランキング: </span>
-        {
-          rankings.map(recipe => <span>{recipe.title} </span>)
-        }
+        {rankings.map((recipe, index) => (
+          <span key={index}>{recipe.title} </span>
+        ))}
       </div>
     </div>
   );
