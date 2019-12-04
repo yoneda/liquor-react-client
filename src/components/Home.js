@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import agent from "../agent";
+import { async } from "q";
 
 const mapStateToProps = state => ({
   rankings: state.recipes.rankings,
@@ -10,6 +12,13 @@ const Home = props => {
   const { rankings, arrivals } = props;
 
   useEffect(() => {
+    const fetchData = async () => {
+      const recipes = await agent.Recipes.all().then(
+        result => result.body.recipes
+      );
+      return recipes;
+    }
+    fetchData().then(result => console.log(result));
   });
 
   return (
