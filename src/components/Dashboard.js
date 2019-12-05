@@ -20,15 +20,15 @@ const Dashboard = props => {
   const { name, bio } = props.profile;
 
   useEffect(() => {
-    loadProfile("smatsuoka");
-  }, [posts]);
+    if(props.profile.name==="")loadProfile("smatsuoka");
+  }, [props.profile]);
 
   useEffect(() => {
-    loadStars("smatsuoka");
+    if(stars.length===0)loadStars("smatsuoka");
   }, [stars]);
 
   useEffect(() => {
-    loadPosts("smatsuoka");
+    if(posts.length===0)loadPosts("smatsuoka");
   }, [posts]);
 
   return (

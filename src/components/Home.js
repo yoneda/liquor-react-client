@@ -14,7 +14,7 @@ const Home = props => {
   const { arrivals, loadRecipes } = props;
 
   useEffect(() => {
-    loadRecipes();
+    if (arrivals.length === 0) loadRecipes();
   }, [arrivals]);
 
   return (

@@ -20,8 +20,8 @@ const Profile = {
   get: account => request.get(`${root}/users/${account}`).then(res => res.body),
   edit: (account, profile) =>
     request
-      .post(`${root}/users/${account}`)
-      .send(profile)
+      .put(`${root}/users/${account}`)
+      .query(profile)
       .then(res => res.body)
 };
 

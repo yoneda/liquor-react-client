@@ -1,4 +1,4 @@
-import { RECEIVE_PROFILE, UPDATE_PROFILE } from "../actions/actionTypes";
+import { RECEIVE_PROFILE } from "../actions/actionTypes";
 
 const initialState = {
   name: "",
