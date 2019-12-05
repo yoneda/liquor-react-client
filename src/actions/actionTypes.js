@@ -6,4 +6,3 @@ export const POSTS_LOADED = "POSTS_LOADED";
 export const PICK_RECIPE = "PICK_RECIPE";
 
 // プロフィール関連
-export const PICK_RECIPE = "PICK_RECIPE";

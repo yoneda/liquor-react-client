@@ -1,25 +1,22 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import agent from "../agent";
-import { async } from "q";
+import { loadRecipes } from "../actions/recipes";
 
 const mapStateToProps = state => ({
   rankings: state.recipes.rankings,
   arrivals: state.recipes.arrivals
 });
 
+const mapDispatchToProps = dispatch => ({
+  loadRecipes: () => loadRecipes()(dispatch)
+});
+
 const Home = props => {
-  const { rankings, arrivals } = props;
+  const { rankings, arrivals, loadRecipes } = props;
 
   useEffect(() => {
-    const fetchData = async () => {
-      const recipes = await agent.Recipes.all().then(
-        result => result.body.recipes
-      );
-      return recipes;
-    }
-    fetchData().then(result => console.log(result));
-  });
+    loadRecipes();
+  }, [arrivals]);
 
   return (
     <div>
@@ -40,4 +37,4 @@ const Home = props => {
   );
 };
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

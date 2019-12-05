@@ -3,16 +3,26 @@ const request = require("superagent");
 const root = "https://cook-example.herokuapp.com";
 
 const Recipes = {
-  all: () => request.get(`${root}/recipes`),
-  get: id => request.get(`${root}/recipes/:${id}`),
-  create: recipe => request.post(`${root}/recipes`).send(recipe),
-  stared: account => request.get(`${root}/users/${account}/stars`),
-  posted: account => request.get(`${root}/users/${account}/posted`)
+  all: () => request.get(`${root}/recipes`).then(res => res.body),
+  get: id => request.get(`${root}/recipes/:${id}`).then(res => res.body),
+  create: recipe =>
+    request
+      .post(`${root}/recipes`)
+      .send(recipe)
+      .then(res => res.body),
+  stared: account =>
+    request.get(`${root}/users/${account}/stars`).then(res => res.body),
+  posted: account =>
+    request.get(`${root}/users/${account}/posted`).then(res => res.body)
 };
 
 const Profile = {
-  get: account => request.get(`${root}/users/${account}`),
-  edit: profile => request.post(`${root}/users/${account}`).send(profile)
+  get: account => request.get(`${root}/users/${account}`).then(res => res.body),
+  edit: (account, profile) =>
+    request
+      .post(`${root}/users/${account}`)
+      .send(profile)
+      .then(res => res.body)
 };
 
 export default {
