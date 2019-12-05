@@ -1,10 +1,19 @@
+import { RECEIVE_PROFILE, UPDATE_PROFILE } from "../actions/actionTypes";
+
 const initialState = {
-  name: "名前",
-  bio: "自己紹介",
-  mail: "mail@gmail.com",
-  pass: "password",
+  name: "",
+  bio: "",
+  mail: "",
+  password: ""
 };
 
-const reducer = (state = initialState, action) => state;
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case RECEIVE_PROFILE:
+      return action.payload;
+    default:
+      return state;
+  }
+};
 
 export default reducer;

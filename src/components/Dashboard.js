@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { loadProfile } from "../actions/profile";
 import { loadStars, loadPosts } from "../actions/recipes";
 
 const mapStateToProps = state => ({
@@ -9,13 +10,18 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  loadProfile: account => loadProfile(account)(dispatch),
   loadStars: account => loadStars(account)(dispatch),
   loadPosts: account => loadPosts(account)(dispatch)
 });
 
 const Dashboard = props => {
-  const { posts, stars, loadStars, loadPosts } = props;
+  const { posts, stars, loadProfile, loadStars, loadPosts } = props;
   const { name, bio } = props.profile;
+
+  useEffect(() => {
+    loadProfile("smatsuoka");
+  }, [posts]);
 
   useEffect(() => {
     loadStars("smatsuoka");
