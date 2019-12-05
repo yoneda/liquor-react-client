@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { loadStars, loadPosts } from "../actions/recipes";
 
 const mapStateToProps = state => ({
   profile: state.profile,
@@ -7,9 +8,23 @@ const mapStateToProps = state => ({
   stars: state.recipes.stars
 });
 
+const mapDispatchToProps = dispatch => ({
+  loadStars: account => loadStars(account)(dispatch),
+  loadPosts: account => loadPosts(account)(dispatch)
+});
+
 const Dashboard = props => {
-  const { posts, stars } = props;
+  const { posts, stars, loadStars, loadPosts } = props;
   const { name, bio } = props.profile;
+
+  useEffect(() => {
+    loadStars("smatsuoka");
+  }, [stars]);
+
+  useEffect(() => {
+    loadPosts("smatsuoka");
+  }, [posts]);
+
   return (
     <div>
       <h2>マイページ画面</h2>
@@ -31,4 +46,4 @@ const Dashboard = props => {
   );
 };
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

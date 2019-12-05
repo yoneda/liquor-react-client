@@ -13,7 +13,7 @@ const Recipes = {
   stared: account =>
     request.get(`${root}/users/${account}/stars`).then(res => res.body),
   posted: account =>
-    request.get(`${root}/users/${account}/posted`).then(res => res.body)
+    request.get(`${root}/users/${account}/recipes`).then(res => res.body)
 };
 
 const Profile = {

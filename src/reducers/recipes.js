@@ -16,22 +16,10 @@ const recipeGen = title => ({
 
 const initialState = {
   picked: recipeGen("ペペロンチーノ"),
-  posts: [
-    recipeGen("カプレーゼ"),
-    recipeGen("カルボナーラ"),
-    recipeGen("マルゲリータ")
-  ],
-  stars: [
-    recipeGen("ローストビーフ"),
-    recipeGen("ジェノベーゼ"),
-    recipeGen("ペンネリガータ")
-  ],
+  posts: [],
+  stars: [],
   rankings: [recipeGen("おでん"), recipeGen("麻婆豆腐"), recipeGen("餃子")],
-  arrivals: [
-    recipeGen("ラム肉のグリル"),
-    recipeGen("ブルーチーズのパスタ"),
-    recipeGen("トリュフのパスタ")
-  ]
+  arrivals: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -40,6 +28,16 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         arrivals: action.payload
+      };
+    case STARS_LOADED:
+      return {
+        ...state,
+        stars: action.payload
+      };
+    case POSTS_LOADED:
+      return {
+        ...state,
+        posts: action.payload
       };
     default:
       return state;

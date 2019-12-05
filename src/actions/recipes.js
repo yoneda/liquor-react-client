@@ -11,7 +11,27 @@ export const recipesLoaded = payload => ({
   payload
 });
 
+export const starsLoaded = payload => ({
+  type: STARS_LOADED,
+  payload
+});
+
+export const postsLoaded = payload => ({
+  type: POSTS_LOADED,
+  payload
+});
+
 export const loadRecipes = () => async dispatch => {
-  const recipes = await agent.Recipes.all().then(results => results.recipes);
+  const { recipes } = await agent.Recipes.all();
   dispatch(recipesLoaded(recipes));
+};
+
+export const loadStars = account => async dispatch => {
+  const { recipes } = await agent.Recipes.stared(account);
+  dispatch(starsLoaded(recipes));
+};
+
+export const loadPosts = account => async dispatch => {
+  const { recipes } = await agent.Recipes.posted(account);
+  dispatch(postsLoaded(recipes));
 };
