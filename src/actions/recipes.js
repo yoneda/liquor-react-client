@@ -35,3 +35,8 @@ export const loadPosts = account => async dispatch => {
   const { recipes } = await agent.Recipes.posted(account);
   dispatch(postsLoaded(recipes));
 };
+
+export const createRecipe = async recipe => {
+  const created = await agent.Recipes.create(recipe);
+  return created;
+}

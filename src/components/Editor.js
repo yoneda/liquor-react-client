@@ -1,8 +1,6 @@
 import React from "react";
-import { connect } from "react-redux";
 import { useLegacyState } from "../hooks";
-
-const mapDispatchToProps = dispatch => ({});
+import { createRecipe } from "../actions/recipes";
 
 const Editor = props => {
   const [state, setState] = useLegacyState({
@@ -44,7 +42,8 @@ const Editor = props => {
       </div>
 
       <div>
-        材料: <br />
+        材料: ※カンマ区切り
+        <br />
         <input
           type="text"
           style={{ width: "300px" }}
@@ -53,7 +52,8 @@ const Editor = props => {
         />
       </div>
       <div>
-        手順: <br />
+        手順: ※カンマ区切り
+        <br />
         <input
           type="text"
           style={{ width: "300px" }}
@@ -61,8 +61,18 @@ const Editor = props => {
           onChange={event => setState({ directions: event.target.value })}
         />
       </div>
+      <br />
+      <button
+        onClick={() => {
+          const recipe = state;
+          const created = createRecipe({ ...recipe, account: "smatsuoka" });
+          console.log(`レシピが作成された。${created}`);
+        }}
+      >
+        ok
+      </button>
     </div>
   );
 };
 
-export default connect(null, mapDispatchToProps)(Editor);
+export default Editor;

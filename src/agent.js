@@ -8,7 +8,7 @@ const Recipes = {
   create: recipe =>
     request
       .post(`${root}/recipes`)
-      .send(recipe)
+      .query(recipe)
       .then(res => res.body),
   stared: account =>
     request.get(`${root}/users/${account}/stars`).then(res => res.body),
