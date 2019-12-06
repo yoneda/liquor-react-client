@@ -1,19 +1,22 @@
 import React, { useState } from "react";
+import { useLegacyState } from "../hooks";
 
 const Register = () => {
-  const [account, setAccount] = useState("");
-  const [mail, setMail] = useState("");
-  const [password, setPassword] = useState("");
+  const [state, setState] = useLegacyState({
+    account: "",
+    mail: "",
+    password: ""
+  });
   return (
     <div>
-      <h2>設定画面</h2>
+      <h2>登録画面</h2>
       <div>
         アカウント名: <br />
         <input
           type="text"
           style={{ width: "300px" }}
-          value={account}
-          onChange={event => setAccount(event.target.value)}
+          value={state.account}
+          onChange={event => setState({ account: event.target.value })}
         />
       </div>
       <div>
@@ -21,8 +24,8 @@ const Register = () => {
         <input
           type="text"
           style={{ width: "300px" }}
-          value={mail}
-          onChange={event => setMail(event.target.value)}
+          value={state.mail}
+          onChange={event => setState({ mail: event.target.value })}
         />
       </div>
       <div>
@@ -30,8 +33,8 @@ const Register = () => {
         <input
           type="text"
           style={{ width: "300px" }}
-          value={password}
-          onChange={event => setPassword(event.target.value)}
+          value={state.password}
+          onChange={event => setState({ password: event.target.value })}
         />
       </div>
       <br />
