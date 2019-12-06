@@ -36,7 +36,7 @@ const Register = () => {
       </div>
       <br />
       <button onClick={() => console.log("ユーザ登録リクエストを送る")}>
-        save
+        register
       </button>
     </div>
   );
