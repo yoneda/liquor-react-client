@@ -31,6 +31,11 @@ export const loadRecipes = () => async dispatch => {
   dispatch(recipesLoaded(recipes));
 };
 
+export const loadOneRecipe = id => async dispatch => {
+  const { recipe } = await agent.Recipes.get(id);
+  dispatch(pickRecipe(recipe));
+}
+
 export const loadStars = account => async dispatch => {
   const { recipes } = await agent.Recipes.stared(account);
   dispatch(starsLoaded(recipes));

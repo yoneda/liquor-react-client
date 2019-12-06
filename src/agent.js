@@ -4,7 +4,7 @@ const root = "https://cook-example.herokuapp.com";
 
 const Recipes = {
   all: () => request.get(`${root}/recipes`).then(res => res.body),
-  get: id => request.get(`${root}/recipes/:${id}`).then(res => res.body),
+  get: id => request.get(`${root}/recipes/${id}`).then(res => res.body),
   create: recipe =>
     request
       .post(`${root}/recipes`)
