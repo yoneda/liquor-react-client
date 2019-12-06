@@ -25,7 +25,7 @@ const App = () => (
       <Settings path="settings" />
       <Register path="register" />
       <Login path="login" />
-      <Recipe path="recipe" />
+      <Recipe path="recipe/:recipeId" />
     </Router>
   </div>
 );

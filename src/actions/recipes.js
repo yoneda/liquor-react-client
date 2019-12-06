@@ -21,6 +21,11 @@ export const postsLoaded = payload => ({
   payload
 });
 
+export const pickRecipe = payload => ({
+  type: PICK_RECIPE,
+  payload
+})
+
 export const loadRecipes = () => async dispatch => {
   const { recipes } = await agent.Recipes.all();
   dispatch(recipesLoaded(recipes));

@@ -1,17 +1,19 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { loadRecipes } from "../actions/recipes";
+import { loadRecipes, pickRecipe } from "../actions/recipes";
+import { Link } from "@reach/router";
 
 const mapStateToProps = state => ({
   arrivals: state.recipes.arrivals
 });
 
 const mapDispatchToProps = dispatch => ({
-  loadRecipes: () => loadRecipes()(dispatch)
+  loadRecipes: () => loadRecipes()(dispatch),
+  pickRecipe: recipe => dispatch(pickRecipe(recipe))
 });
 
 const Home = props => {
-  const { arrivals, loadRecipes } = props;
+  const { arrivals, loadRecipes, pickRecipe } = props;
 
   useEffect(() => {
     if (arrivals.length === 0) loadRecipes();
@@ -23,7 +25,15 @@ const Home = props => {
       <div>
         <div>新着: </div>
         {arrivals.map((recipe, index) => (
-          <div key={index}>{recipe.title} </div>
+          <div>
+            <Link
+              key={index}
+              to={`recipe/${recipe.id}`}
+              onClick={() => pickRecipe(recipe)}
+            >
+              {recipe.title}
+            </Link>
+          </div>
         ))}
       </div>
     </div>

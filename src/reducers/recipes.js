@@ -1,7 +1,8 @@
 import {
   RECIPES_LOADED,
   STARS_LOADED,
-  POSTS_LOADED
+  POSTS_LOADED,
+  PICK_RECIPE
 } from "../actions/actionTypes";
 
 const recipeGen = title => ({
@@ -15,7 +16,7 @@ const recipeGen = title => ({
 });
 
 const initialState = {
-  picked: recipeGen("ペペロンチーノ"),
+  picked: {},
   posts: [],
   stars: [],
   rankings: [recipeGen("おでん"), recipeGen("麻婆豆腐"), recipeGen("餃子")],
@@ -39,6 +40,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         posts: action.payload
       };
+    case PICK_RECIPE:
+      return {
+        ...state,
+        picked: action.payload
+      }
     default:
       return state;
   }
