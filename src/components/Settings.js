@@ -13,30 +13,29 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const Settings = props => {
-  const { loadProfile, updateProfile } = props;
-  const currentProfile = props.profile;
+  const { loadProfile, updateProfile, profile } = props;
 
   // constructor
-  const [name, setName] = useState("");
-  const [bio, setBio] = useState("");
-  const [mail, setMail] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState(profile.name);
+  const [bio, setBio] = useState(profile.bio);
+  const [mail, setMail] = useState(profile.mail);
+  const [password, setPassword] = useState(profile.password);
 
   // component did mount
   useEffect(() => {
-    loadProfile("smatsuoka");
+    if (profile.name === "") loadProfile("smatsuoka");
   }, []);
 
   // component did update
   const mounted = useRef(false);
   useEffect(() => {
     if (mounted.current === true) {
-      setName(currentProfile.name);
-      setBio(currentProfile.bio);
-      setMail(currentProfile.mail);
-      setPassword(currentProfile.password);
+      setName(profile.name);
+      setBio(profile.bio);
+      setMail(profile.mail);
+      setPassword(profile.password);
     } else mounted.current = true;
-  }, [currentProfile]);
+  }, [profile]);
 
   return (
     <div>
