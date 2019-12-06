@@ -12,7 +12,6 @@ export const loadProfile = account => async dispatch => {
 };
 
 export const updateProfile = (account, profile) => async dispatch => {
-  console.log(profile);
   const { user } = await agent.Profile.edit(account, profile);
   dispatch(receiveProfile(user));
-}
+};
