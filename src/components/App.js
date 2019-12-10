@@ -8,6 +8,7 @@ const App = () => (
     <nav>
       <Link to="/">カクテルホーム</Link> | <Link to="detail">カクテル詳細</Link>
     </nav>
+    <h2>Liquor Search App</h2>
     <Router>
       <Home path="/" />
       <Detail path="detail/:id" />
