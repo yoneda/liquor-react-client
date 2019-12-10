@@ -6,7 +6,7 @@ import "./index.css";
 import App from "./components/App";
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql"
+  uri: "https://liquor-graphql-server.glitch.me/graphql"
 });
 render(
   <ApolloProvider client={client}>
