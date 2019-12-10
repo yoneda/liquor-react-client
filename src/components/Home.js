@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "@reach/router";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
@@ -18,6 +18,9 @@ const Home = props => {
   const { loading, error, data } = useQuery(ALL_DRINKS, {
     variables: { category }
   });
+  useEffect(()=>{
+    window.scrollTo(0,0);
+  })
   if (loading) return <div>loading</div>;
   if (error) return <div>error:{error}</div>;
   return (
@@ -34,7 +37,7 @@ const Home = props => {
             {drink.name}
           </Link>
           <br />
-          <img src={`${drink.url}`} width="50" />
+          <img src={`${drink.url}`} width="100" />
         </div>
       ))}
     </div>

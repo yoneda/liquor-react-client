@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "@reach/router";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 
@@ -9,6 +10,7 @@ const GET_DRINK = gql`
       name
       url
       category
+      instructions
     }
   }
 `;
@@ -20,13 +22,22 @@ const Detail = props => {
   });
   if (loading) return <div>loading</div>;
   if (error) return <div>error:{error}</div>;
-  return(
+  const drink = data.Drink;
+  return (
     <div>
       {
-        data.Drink.name
+        <div>
+          <img src={`${drink.url}`} wdith="200" />
+          <h4>title</h4>
+          <div>{drink.name}</div>
+          <h4>category</h4>
+          <div>{drink.category}</div><br />
+          <div><Link to="/">back to home</Link></div>
+          <br />
+        </div>
       }
     </div>
-  )
+  );
 };
 
 export default Detail;
