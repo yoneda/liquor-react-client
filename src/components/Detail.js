@@ -13,7 +13,7 @@ const GET_DRINK = gql`
   }
 `;
 
-const DrinkDetail = props => {
+const Detail = props => {
   const { id } = props;
   const { loading, error, data } = useQuery(GET_DRINK, {
     variables: { id }
@@ -29,4 +29,4 @@ const DrinkDetail = props => {
   )
 };
 
-export default DrinkDetail;
+export default Detail;

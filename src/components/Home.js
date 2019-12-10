@@ -1,43 +1,35 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { loadRecipes, pickRecipe } from "../actions/recipes";
+import React from "react";
 import { Link } from "@reach/router";
+import { useQuery } from "@apollo/react-hooks";
+import { gql } from "apollo-boost";
 
-const mapStateToProps = state => ({
-  arrivals: state.recipes.arrivals
-});
-
-const mapDispatchToProps = dispatch => ({
-  loadRecipes: () => loadRecipes()(dispatch),
-  pickRecipe: recipe => dispatch(pickRecipe(recipe))
-});
+const ALL_DRINKS = gql`
+  query {
+    allDrinks(category: COCKTAIL) {
+      id
+      name
+      url
+    }
+  }
+`;
 
 const Home = props => {
-  const { arrivals, loadRecipes, pickRecipe } = props;
-
-  useEffect(() => {
-    if (arrivals.length === 0) loadRecipes();
-  }, [arrivals]);
-
+  const { loading, error, data } = useQuery(ALL_DRINKS);
+  if (loading) return <div>loading</div>;
+  if (error) return <div>error:{error}</div>;
   return (
     <div>
-      <h2>ホーム画面</h2>
-      <div>
-        <div>新着: </div>
-        {arrivals.map((recipe, index) => (
-          <div>
-            <Link
-              key={index}
-              to={`recipe/${recipe.id}`}
-              onClick={() => pickRecipe(recipe)}
-            >
-              {recipe.title}
-            </Link>
-          </div>
-        ))}
-      </div>
+      {data.allDrinks.map((drink, index) => (
+        <div>
+          <Link key={index} to={`/detail/${drink.id}`}>
+            {drink.name}
+          </Link>
+          <br />
+          <img src={`${drink.url}`} width="50" />
+        </div>
+      ))}
     </div>
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;
