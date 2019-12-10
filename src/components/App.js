@@ -31,7 +31,7 @@ const App = () => (
       <Login path="login" />
       <Recipe path="recipe/:recipeId" />
       <DrinkHome path="drinkhome" />
-      <DrinkDetail path="drinkdetail" />
+      <DrinkDetail path="drinkdetail/:id" />
     </Router>
   </div>
 );
