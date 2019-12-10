@@ -6,6 +6,8 @@ import Settings from "./Settings";
 import Register from "./Register";
 import Login from "./Login";
 import Recipe from "./Recipe";
+import DrinkHome from "./DrinkHome";
+import DrinkDetail from "./DrinkDetail";
 import { Router, Link } from "@reach/router";
 
 const App = () => (
@@ -16,7 +18,9 @@ const App = () => (
       <Link to="dashboard">マイページ</Link> |{" "}
       <Link to="settings">設定</Link> |{" "}
       <Link to="register">登録</Link> |{" "}
-      <Link to="login">ログイン</Link>
+      <Link to="login">ログイン</Link> |{" "}
+      <Link to="drinkhome">カクテルホーム</Link> |{" "}
+      <Link to="drinkdetail">カクテル詳細</Link>
     </nav>
     <Router>
       <Home path="/" />
@@ -26,6 +30,8 @@ const App = () => (
       <Register path="register" />
       <Login path="login" />
       <Recipe path="recipe/:recipeId" />
+      <DrinkHome path="drinkhome" />
+      <DrinkDetail path="drinkdetail" />
     </Router>
   </div>
 );
