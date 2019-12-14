@@ -21,7 +21,6 @@ const Home = props => {
   useEffect(()=>{
     window.scrollTo(0,0);
   })
-  if (loading) return <div>loading</div>;
   if (error) return <div>error:{error}</div>;
   return (
     <div>
@@ -31,15 +30,18 @@ const Home = props => {
       <button onClick={event => setCategory("COFFEE")}>coffee</button>
       <button onClick={event => setCategory("OTHER")}>others</button>
       <h3>List</h3>
-      {data.allDrinks.map((drink, index) => (
-        <div>
-          <Link key={index} to={`/detail/${drink.id}`}>
-            {drink.name}
-          </Link>
-          <br />
-          <img src={`${drink.url}`} width="100" />
-        </div>
-      ))}
+      {
+        loading ?  <div>loading</div> :
+        data.allDrinks.map((drink, index) => (
+          <div>
+            <Link key={index} to={`/detail/${drink.id}`}>
+              {drink.name}
+            </Link>
+            <br />
+            <img src={`${drink.url}`} width="100" />
+          </div>
+        ))
+      }
     </div>
   );
 };
